@@ -47,5 +47,21 @@ internal class Pessoas
 
         Console.WriteLine($"Arquivo Json criado com sucesso em {Path.GetFullPath(json)}");
         File.WriteAllText(json, arquivo);
-    }   
+    }
+
+
+    public void GerarArquivoTxt() 
+    {
+        string nome = $"arquivotxt-gerado{Nome}.txt";
+
+        using (StreamWriter arquivo = new StreamWriter(nome))
+        {
+            arquivo.WriteLine($"Arquivo texte {nome}");
+            foreach (var pessoa in ListaDePessoas) 
+            {
+                arquivo.WriteLine($"- {pessoa.Nome} {pessoa.Idade} {pessoa.Email}");
+            }
+        }
+        Console.WriteLine("Txt gerado com sucesso");
+    }
 }
