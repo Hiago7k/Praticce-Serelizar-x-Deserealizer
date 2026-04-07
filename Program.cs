@@ -23,3 +23,5 @@ Pessoas listaDePessoas = new Pessoas("Lista Pessoas");
 
 listaDePessoas.AdicionarNaListaDePessoas(hiago);
 listaDePessoas.ExibirLista();
+
+listaDePessoas.GerarArquivoJson();

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
+using System.Threading.Channels;
 using System.Threading.Tasks;
 
 namespace Praticce_Serelizar_x_Deserealizer;
@@ -30,6 +32,20 @@ internal class Pessoas
         {
             Console.WriteLine($"- {pessoa.Nome} | {pessoa.Idade} {pessoa.Email}");
         }
-
     }
+
+
+    public void GerarArquivoJson() 
+    {
+        string json = $"gerando-arquivo{Nome}.json";
+
+        var arquivo = JsonSerializer.Serialize(new
+        {
+            nome = Nome,
+            pessoa = ListaDePessoas
+        });
+
+        Console.WriteLine($"Arquivo Json criado com sucesso em {Path.GetFullPath(json)}");
+        File.WriteAllText(json, arquivo);
+    }   
 }
